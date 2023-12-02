@@ -1,0 +1,11 @@
+C:\Users\User\Source\Repos\Image Filtering Project\bin\Debug\Image Filtering Project.exe.config
+C:\Users\User\Source\Repos\Image Filtering Project\bin\Debug\Image Filtering Project.exe
+C:\Users\User\Source\Repos\Image Filtering Project\bin\Debug\Image Filtering Project.pdb
+C:\Users\User\Source\Repos\Image Filtering Project\obj\Debug\Image Filtering Project.csproj.AssemblyReference.cache
+C:\Users\User\Source\Repos\Image Filtering Project\obj\Debug\Image Filtering Project.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\Source\Repos\Image Filtering Project\obj\Debug\Image_Filtering_Project.Form1.resources
+C:\Users\User\Source\Repos\Image Filtering Project\obj\Debug\Image_Filtering_Project.Properties.Resources.resources
+C:\Users\User\Source\Repos\Image Filtering Project\obj\Debug\Image Filtering Project.csproj.GenerateResource.cache
+C:\Users\User\Source\Repos\Image Filtering Project\obj\Debug\Image Filtering Project.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\Image Filtering Project\obj\Debug\Image Filtering Project.exe
+C:\Users\User\Source\Repos\Image Filtering Project\obj\Debug\Image Filtering Project.pdb
