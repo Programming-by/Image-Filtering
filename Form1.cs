@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Image_Filtering_Project
@@ -14,20 +17,42 @@ namespace Image_Filtering_Project
         private void Form1_Load(object sender, EventArgs e)
         {
             cbSize.SelectedIndex = 0;
+            rbDetails.Checked = true;
+            //on set image refresh list view
+            // Filter List View based on Image Size
 
+            DirectoryInfo ImageDirectory = new DirectoryInfo(@"C:\ImageFilters\");
 
+            string[] pics = Directory.GetFiles(@"C:\ImageFilters\");
 
-            //for (int i = 1; i <= 5;i++)
-            //{
-            //    ListViewItem item = new ListViewItem(i.ToString());
+            lblDirectoryName.Text = ImageDirectory.Name;
 
-            //    listView1.Items.Add(i.ToString());
-            //}
+            listView1.SmallImageList = imageList1;
 
+            imageList1.ImageSize = new Size(40, 40);
 
+            foreach (var pic in pics)
+            {
+                imageList1.Images.Add(Image.FromFile(pic));
+            }
 
+            _FillImagesToListView();
+      
         }
 
+
+        private void _FillImagesToListView()
+        {
+
+            for (int j = 0; j < imageList1.Images.Count; j++)
+            {
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = j;
+
+                listView1.Items.Add(item);
+            }
+        }
         private bool _HandleImage()
         {
             if (pbImage.ImageLocation != null)
@@ -37,11 +62,11 @@ namespace Image_Filtering_Project
             if (clsUtil.CopyImageToProjectImagesFolder(ref sourceFile))
             {
                 pbImage.ImageLocation = sourceFile;
-                    return true;
+                return true;
             } else
                 {
-                  MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                  return false;
+                MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 return false;
                 }
             }
             return true;
@@ -57,15 +82,8 @@ namespace Image_Filtering_Project
             {
                 string selectedPath = openFileDialog1.FileName;
                 pbImage.Load(selectedPath);
-            }
-        
-            if (!clsUtil.CreateFolderIfDoesNotExist("c:\\ImageFilters"))
-            {
-                return;
-            }
+             }
             _HandleImage();
-
-
         }
 
         private void rbDetails_CheckedChanged(object sender, EventArgs e)
@@ -92,6 +110,11 @@ namespace Image_Filtering_Project
         private void rbTile_CheckedChanged(object sender, EventArgs e)
         {
             listView1.View= View.Tile;
+        }
+
+        private void cbSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        
         }
     }
 }

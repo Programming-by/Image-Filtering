@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.llSetImage = new System.Windows.Forms.LinkLabel();
             this.cbSize = new System.Windows.Forms.ComboBox();
@@ -38,8 +39,9 @@
             this.rbLargeIcon = new System.Windows.Forms.RadioButton();
             this.rbTile = new System.Windows.Forms.RadioButton();
             this.rbList = new System.Windows.Forms.RadioButton();
+            this.lblDirectoryName = new System.Windows.Forms.Label();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbImage.Image = global::Image_Filtering_Project.Properties.Resources.Male_512;
             this.pbImage.InitialImage = null;
-            this.pbImage.Location = new System.Drawing.Point(588, 57);
+            this.pbImage.Location = new System.Drawing.Point(748, 12);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(166, 150);
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -58,7 +60,7 @@
             // llSetImage
             // 
             this.llSetImage.AutoSize = true;
-            this.llSetImage.Location = new System.Drawing.Point(630, 230);
+            this.llSetImage.Location = new System.Drawing.Point(791, 177);
             this.llSetImage.Name = "llSetImage";
             this.llSetImage.Size = new System.Drawing.Size(68, 16);
             this.llSetImage.TabIndex = 2;
@@ -74,10 +76,11 @@
             "300 KB",
             "200 KB",
             "90   KB"});
-            this.cbSize.Location = new System.Drawing.Point(24, 72);
+            this.cbSize.Location = new System.Drawing.Point(15, 25);
             this.cbSize.Name = "cbSize";
             this.cbSize.Size = new System.Drawing.Size(121, 24);
             this.cbSize.TabIndex = 3;
+            this.cbSize.SelectedIndexChanged += new System.EventHandler(this.cbSize_SelectedIndexChanged);
             // 
             // openFileDialog1
             // 
@@ -86,12 +89,11 @@
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader1});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 160);
+            this.listView1.Location = new System.Drawing.Point(12, 211);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(508, 239);
+            this.listView1.Size = new System.Drawing.Size(847, 368);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -156,19 +158,32 @@
             this.rbList.UseVisualStyleBackColor = true;
             this.rbList.CheckedChanged += new System.EventHandler(this.rbList_CheckedChanged);
             // 
+            // lblDirectoryName
+            // 
+            this.lblDirectoryName.AutoSize = true;
+            this.lblDirectoryName.Location = new System.Drawing.Point(12, 166);
+            this.lblDirectoryName.Name = "lblDirectoryName";
+            this.lblDirectoryName.Size = new System.Drawing.Size(84, 16);
+            this.lblDirectoryName.TabIndex = 10;
+            this.lblDirectoryName.Text = "Image Filters";
+            // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Text = "Image";
+            this.columnHeader1.Width = 168;
             // 
-            // columnHeader2
+            // imageList1
             // 
-            this.columnHeader2.Text = "Image";
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(926, 560);
+            this.Controls.Add(this.lblDirectoryName);
             this.Controls.Add(this.rbList);
             this.Controls.Add(this.rbTile);
             this.Controls.Add(this.rbLargeIcon);
@@ -199,8 +214,9 @@
         private System.Windows.Forms.RadioButton rbLargeIcon;
         private System.Windows.Forms.RadioButton rbTile;
         private System.Windows.Forms.RadioButton rbList;
+        private System.Windows.Forms.Label lblDirectoryName;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
