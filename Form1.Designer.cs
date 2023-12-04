@@ -34,14 +34,15 @@
             this.cbSize = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rbDetails = new System.Windows.Forms.RadioButton();
             this.rbSmallIcon = new System.Windows.Forms.RadioButton();
             this.rbLargeIcon = new System.Windows.Forms.RadioButton();
             this.rbTile = new System.Windows.Forms.RadioButton();
             this.rbList = new System.Windows.Forms.RadioButton();
             this.lblDirectoryName = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.cbExtension = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,6 +98,11 @@
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Image";
+            this.columnHeader1.Width = 168;
             // 
             // rbDetails
             // 
@@ -167,22 +173,30 @@
             this.lblDirectoryName.TabIndex = 10;
             this.lblDirectoryName.Text = "Image Filters";
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Image";
-            this.columnHeader1.Width = 168;
-            // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // cbExtension
+            // 
+            this.cbExtension.FormattingEnabled = true;
+            this.cbExtension.Items.AddRange(new object[] {
+            "png",
+            "jpg"});
+            this.cbExtension.Location = new System.Drawing.Point(98, 90);
+            this.cbExtension.Name = "cbExtension";
+            this.cbExtension.Size = new System.Drawing.Size(121, 24);
+            this.cbExtension.TabIndex = 11;
+            this.cbExtension.SelectedIndexChanged += new System.EventHandler(this.cbExtension_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 560);
+            this.Controls.Add(this.cbExtension);
             this.Controls.Add(this.lblDirectoryName);
             this.Controls.Add(this.rbList);
             this.Controls.Add(this.rbTile);
@@ -217,6 +231,7 @@
         private System.Windows.Forms.Label lblDirectoryName;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ComboBox cbExtension;
     }
 }
 

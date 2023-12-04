@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Image_Filtering_Project
@@ -14,21 +15,30 @@ namespace Image_Filtering_Project
             InitializeComponent();
         }
 
+        // on set image refresh list view
+        // Filter List View by  Image Size
         private void Form1_Load(object sender, EventArgs e)
         {
             cbSize.SelectedIndex = 0;
             rbDetails.Checked = true;
-            //on set image refresh list view
-            // Filter List View based on Image Size
+
+
+            GetFilesAndFillImageList();
+
+
+            // float fileLength;
+            // fileLength = new FileInfo(pic).Length;
+
+        }
+
+        private void GetFilesAndFillImageList(string Extension = "*")
+        {
+        
 
             DirectoryInfo ImageDirectory = new DirectoryInfo(@"C:\ImageFilters\");
 
-            string[] pics = Directory.GetFiles(@"C:\ImageFilters\");
-
-            lblDirectoryName.Text = ImageDirectory.Name;
-
+            string[] pics = Directory.GetFiles(ImageDirectory.ToString(), $"*.{Extension}");
             listView1.SmallImageList = imageList1;
-
             imageList1.ImageSize = new Size(40, 40);
 
             foreach (var pic in pics)
@@ -37,10 +47,7 @@ namespace Image_Filtering_Project
             }
 
             _FillImagesToListView();
-      
-        }
-
-
+        }    
         private void _FillImagesToListView()
         {
 
@@ -52,6 +59,25 @@ namespace Image_Filtering_Project
 
                 listView1.Items.Add(item);
             }
+        }
+        
+        private void _FillImageToListView()
+        {
+            imageList1.Images.Add(Image.FromFile(pbImage.ImageLocation));
+
+            int j = (imageList1.Images.Count - 1);
+            ListViewItem item = new ListViewItem();
+
+            item.ImageIndex = j;
+
+            listView1.Items.Add(item);
+        }
+        private void _FilterImageInListViewByExtension(string Extension)
+        {
+            listView1.Clear();
+            imageList1.Images.Clear();
+
+            GetFilesAndFillImageList(Extension);
         }
         private bool _HandleImage()
         {
@@ -71,7 +97,6 @@ namespace Image_Filtering_Project
             }
             return true;
         }
-
         private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
@@ -84,37 +109,55 @@ namespace Image_Filtering_Project
                 pbImage.Load(selectedPath);
              }
             _HandleImage();
-        }
 
+            _FillImageToListView();
+        }
         private void rbDetails_CheckedChanged(object sender, EventArgs e)
         {
             listView1.View = View.Details;
         }
-
         private void rbSmallIcon_CheckedChanged(object sender, EventArgs e)
         {
             listView1.View = View.SmallIcon;
 
         }
-
         private void rbLargeIcon_CheckedChanged(object sender, EventArgs e)
         {
             listView1.View = View.LargeIcon;
         }
-
         private void rbList_CheckedChanged(object sender, EventArgs e)
         {
             listView1.View = View.List;
         }
-
         private void rbTile_CheckedChanged(object sender, EventArgs e)
         {
             listView1.View= View.Tile;
         }
-
         private void cbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-        
+            switch (cbSize.Text)
+            {
+
+                case "500 KB":
+                    break;
+                case "300 KB":
+
+                    break;
+
+                case "200 KB":
+
+                    break;
+
+                case "90 KB":
+
+                    break;
+
+
+            }
+        }
+        private void cbExtension_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _FilterImageInListViewByExtension(cbExtension.Text);
         }
     }
 }
