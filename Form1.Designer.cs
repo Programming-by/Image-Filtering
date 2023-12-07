@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.llSetImage = new System.Windows.Forms.LinkLabel();
-            this.cbSize = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -69,20 +68,6 @@
             this.llSetImage.Text = "Set Image";
             this.llSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSetImage_LinkClicked);
             // 
-            // cbSize
-            // 
-            this.cbSize.FormattingEnabled = true;
-            this.cbSize.Items.AddRange(new object[] {
-            "500 KB",
-            "300 KB",
-            "200 KB",
-            "90   KB"});
-            this.cbSize.Location = new System.Drawing.Point(15, 25);
-            this.cbSize.Name = "cbSize";
-            this.cbSize.Size = new System.Drawing.Size(121, 24);
-            this.cbSize.TabIndex = 3;
-            this.cbSize.SelectedIndexChanged += new System.EventHandler(this.cbSize_SelectedIndexChanged);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -94,8 +79,9 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 211);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(847, 368);
+            this.listView1.Size = new System.Drawing.Size(902, 368);
             this.listView1.TabIndex = 4;
+            this.listView1.TileSize = new System.Drawing.Size(5, 6);
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
@@ -183,9 +169,10 @@
             // 
             this.cbExtension.FormattingEnabled = true;
             this.cbExtension.Items.AddRange(new object[] {
+            "All",
             "png",
             "jpg"});
-            this.cbExtension.Location = new System.Drawing.Point(98, 90);
+            this.cbExtension.Location = new System.Drawing.Point(15, 25);
             this.cbExtension.Name = "cbExtension";
             this.cbExtension.Size = new System.Drawing.Size(121, 24);
             this.cbExtension.TabIndex = 11;
@@ -195,7 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 560);
+            this.ClientSize = new System.Drawing.Size(951, 623);
             this.Controls.Add(this.cbExtension);
             this.Controls.Add(this.lblDirectoryName);
             this.Controls.Add(this.rbList);
@@ -204,7 +191,6 @@
             this.Controls.Add(this.rbSmallIcon);
             this.Controls.Add(this.rbDetails);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.cbSize);
             this.Controls.Add(this.llSetImage);
             this.Controls.Add(this.pbImage);
             this.Name = "Form1";
@@ -220,7 +206,6 @@
 
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.LinkLabel llSetImage;
-        private System.Windows.Forms.ComboBox cbSize;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.RadioButton rbDetails;

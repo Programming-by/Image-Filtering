@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Image_Filtering_Project
 {
@@ -15,30 +17,19 @@ namespace Image_Filtering_Project
             InitializeComponent();
         }
 
-        // on set image refresh list view
-        // Filter List View by  Image Size
         private void Form1_Load(object sender, EventArgs e)
         {
-            cbSize.SelectedIndex = 0;
+            cbExtension.SelectedIndex = 0;
             rbDetails.Checked = true;
-
-
             GetFilesAndFillImageList();
-
-
-            // float fileLength;
-            // fileLength = new FileInfo(pic).Length;
-
         }
-
         private void GetFilesAndFillImageList(string Extension = "*")
         {
-        
-
             DirectoryInfo ImageDirectory = new DirectoryInfo(@"C:\ImageFilters\");
 
             string[] pics = Directory.GetFiles(ImageDirectory.ToString(), $"*.{Extension}");
             listView1.SmallImageList = imageList1;
+            listView1.LargeImageList = imageList1;
             imageList1.ImageSize = new Size(40, 40);
 
             foreach (var pic in pics)
@@ -50,7 +41,6 @@ namespace Image_Filtering_Project
         }    
         private void _FillImagesToListView()
         {
-
             for (int j = 0; j < imageList1.Images.Count; j++)
             {
                 ListViewItem item = new ListViewItem();
@@ -60,8 +50,7 @@ namespace Image_Filtering_Project
                 listView1.Items.Add(item);
             }
         }
-        
-        private void _FillImageToListView()
+       private void _FillSingleImageToListView()
         {
             imageList1.Images.Add(Image.FromFile(pbImage.ImageLocation));
 
@@ -72,11 +61,14 @@ namespace Image_Filtering_Project
 
             listView1.Items.Add(item);
         }
-        private void _FilterImageInListViewByExtension(string Extension)
+        public void Clear()
         {
             listView1.Clear();
             imageList1.Images.Clear();
-
+        }
+        private void _FilterImageInListViewByExtension(string Extension)
+        {
+            Clear();
             GetFilesAndFillImageList(Extension);
         }
         private bool _HandleImage()
@@ -110,7 +102,7 @@ namespace Image_Filtering_Project
              }
             _HandleImage();
 
-            _FillImageToListView();
+            _FillSingleImageToListView();
         }
         private void rbDetails_CheckedChanged(object sender, EventArgs e)
         {
@@ -131,32 +123,13 @@ namespace Image_Filtering_Project
         }
         private void rbTile_CheckedChanged(object sender, EventArgs e)
         {
-            listView1.View= View.Tile;
-        }
-        private void cbSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cbSize.Text)
-            {
-
-                case "500 KB":
-                    break;
-                case "300 KB":
-
-                    break;
-
-                case "200 KB":
-
-                    break;
-
-                case "90 KB":
-
-                    break;
-
-
-            }
+            listView1.View = View.Tile;
         }
         private void cbExtension_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbExtension.SelectedIndex == 0)
+                return;
+
             _FilterImageInListViewByExtension(cbExtension.Text);
         }
     }
